@@ -1,0 +1,15 @@
+﻿@model IEnumerable<MyBooks.Models.Book>
+<div class="container">
+    <h2 class="section-title">SẢN PHẨM MỚI NHẤT</h2>
+    <div class="row d-flex justify-content-between" style="margin-top: 10px">
+        @foreach (var sach in Model)
+        {
+            <div class="product-box">
+                <img class="img-product" src="~/Image/@sach.Imagebook" alt="" />
+                <h2 class="product-title">@sach.BookName</h2>
+                <span class="price">@Math.Round(Convert.ToDouble(sach.Price), 0) đ</span>
+                <a href="@Url.Action("Detail", "Product", new { id = sach.BookID})" style="position:absolute; " class="add-cart"><i class="bi bi-bag-check-fill " style="height: 100%; width: 100%"></i></a>
+            </div>
+        }
+    </div>
+</div>

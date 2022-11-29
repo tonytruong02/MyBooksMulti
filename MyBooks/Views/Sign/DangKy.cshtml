@@ -1,0 +1,52 @@
+﻿@model MyBooks.Models.Customer
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/mystyle.css" rel="stylesheet" />
+<link href="~/Content/stylepro.css" rel="stylesheet" />
+<section>
+    <div class="container">
+        <div class="img-bg">
+            <img src="~/Image/mybooks_logo.png" alt="">
+        </div>
+        <div class="noi-dung">
+            <div class="form">
+                <h2>Trang Đăng Ký</h2>
+                <h4>@ViewBag.ThongBaoDangKy</h4>
+                @Html.ValidationSummary(false)
+                <form action="~/Sign/DangKy" method="post">
+                    <div class="input-form">
+                        <span>ID Khách Hàng</span>
+                        <input type="number" required name="kh.IDCus" placeholder="ID Khach Hang"><br />
+                        <i>Mã số khách hàng không chứa số "0" ở đầu</i>
+                    </div>
+                    <div class="input-form">
+                        <span>Tên Người Dùng</span>
+                        <input type="text" required name="kh.NameCus" placeholder="Name">
+                    </div>
+                    <div class="input-form">
+                        <span>Email</span>
+                        <input type="email" required name="kh.EmailCus" placeholder="Email">
+                    </div>
+                    <div class="input-form">
+                        <span>Số Điện Thoại</span>
+                        <input type="tel" required name="kh.PhoneCus" placeholder="Số điện thoại">
+                    </div>
+                    <div class="input-form">
+                        <span>Mật Khẩu</span>
+                        <input type="password" required name="kh.PassCus" placeholder="Nhập mật khẩu">
+                    </div>
+                    <div class="input-form">
+                        <input type="submit" required value="Đăng Ký">
+                    </div>
+                </form>
+                <div class="input-form">
+                    <p>Bạn Đã Có Tài Khoản? <a href="DangNhap">Đăng Nhập</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

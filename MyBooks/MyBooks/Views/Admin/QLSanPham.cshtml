@@ -1,0 +1,90 @@
+﻿@using MyBooks.Models
+@using System
+@model  IEnumerable<Book>
+
+@{
+    ViewBag.Title = "QLSanPham";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link href="~/Content/mystyle.css" rel="stylesheet" />
+    <link href="~/Content/stylepro.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 0;
+        }
+        .img-product{
+           width: 100px;
+        }
+    </style>
+</head>
+
+<h2>QLSanPham</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBook")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <span>Tên Sách</span>
+        </th>
+        <th>
+            <span>Nhà Xuất Bản</span>
+        </th>
+        <th>
+            <span>Nhà Cung Cấp</span>
+        </th>
+        <th>
+            <span>Chủ Đề</span>
+        </th>
+        <th>
+            <span>Đơn Vị</span>
+        </th>
+        <th>
+            <span>Số Lượng Tồn</span>
+        </th>
+        <th>
+            <span>Đơn Giá</span>
+        </th>
+        <th>
+            <span>Ảnh</span>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BookName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NXB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NCC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category1.MoTa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Unit)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SLuong)
+    </td>
+    <td>
+        <span>@Math.Round(Convert.ToDouble(item.Price), 0) đ</span>
+    </td>
+    <td>
+        <img class="img-product" src="~/Image/@item.Imagebook" alt="" />
+    </td>
+    <td>
+        @Html.ActionLink("Sửa lại", "Edit", "Admin", new { id = item.BookID }, "get") |
+        @Html.ActionLink("Xóa","DeleteBook", "Admin", new { bookid = item.BookID }, "get")
+    </td>
+</tr>
+    }
+</table>
+<a href="@Url.Action("AdminControl", "Admin")" class="btn" style="border: 1px solid black">Về trang chủ</a>

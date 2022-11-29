@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MyBooks.Models.Book>
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <style>
+        body {
+            margin:0px; 
+            padding: 0;
+            width: 100%;
+        }
+
+        .img-product {
+            width: 100%;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+            .container .the {
+                display: flex;
+                justify-content: space-between;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="the col-5">
+                <div class="namenvoucher col-lg-6">
+                    <span style="text-align: center; text-transform: uppercase">@item.BookName</span><br />
+                    <span>Danh sách voucher đang dùng</span><br />
+                    @Html.Action("ListVoucherDetail", "Admin", new { idbook = item.BookID})
+                </div>
+                <div class="img col-5">
+                    <img src="~/Image/@item.Imagebook" alt="Alternate Text" class="img-product" />
+                </div>
+            </div>
+        }
+    </div>
+</body>

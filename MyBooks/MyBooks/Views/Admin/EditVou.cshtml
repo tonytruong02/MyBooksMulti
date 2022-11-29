@@ -1,0 +1,43 @@
+﻿@model MyBooks.Models.VOUCHER
+
+@{
+    ViewBag.Title = "EditVoucher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditVoucher</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>VOUCHER</h4>
+    <hr />
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span class="control-label col-md-2">Mã Voucher</span>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="voucher.MAVOUCHER" value="@Model.MAVOUCHER" required/>
+        </div>
+    </div>
+
+    <span class="control-label col-md-2">Tỉ lệ giảm</span>
+    <div class="col-md-10">
+        <input class="form-control" type="text" name="voucher.GIAM" value="@Model.GIAM" required/>
+    </div>
+
+    <span class = "control-label col-md-2">Mô tả</span>
+        <div class="col-md-10">
+            <input class = "form-control" type="text" name="voucher.MoTa" value="@Model.MoTa" required/>
+        </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>  
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "QLVoucher")
+</div>

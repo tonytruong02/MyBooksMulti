@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyBooks.Models.VOUCHER>
+
+@{
+    ViewBag.Title = "QLVoucher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/mystyle.css" rel="stylesheet" />
+
+<h2>QLVoucher</h2>
+
+<div class="btn custom-btn btn-16">
+    @Html.ActionLink("Tạo mới", "CreateVoucher")
+</div>
+<div class="btn custom-btn btn-16">
+    @Html.ActionLink("Gán link", "ShowBookList")
+</div>
+<div class="btn custom-btn btn-16">
+    @Html.ActionLink("Danh Sách", "Detail")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            <span> Mã Voucher</span>
+        </th>
+        <th>
+            <span>Tỉ lệ giảm</span>
+        </th>
+        <th>
+            <span>Mô tả</span>
+        </th>
+    </tr>
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MAVOUCHER)
+    </td>
+    <td>
+        <span> @Math.Round((double)(item.GIAM * 100), 0)% </span>
+    </td>
+    <td>
+        <span> @item.MoTa </span>
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditVou", new { id = item.MAVOUCHER.Trim() }) |
+        @Html.ActionLink("Delete", "DeleteVoucher", new { id = item.MAVOUCHER.Trim() })
+    </td>
+</tr>
+}
+</table>
+
+<a  href="@Url.Action("AdminControl", "Admin")" class="btn custom-btn btn-5" style="border: 1px solid black">Về trang chủ</a>

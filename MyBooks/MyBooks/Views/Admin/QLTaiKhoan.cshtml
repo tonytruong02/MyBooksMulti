@@ -1,0 +1,70 @@
+﻿@using MyBooks.Models
+@using System
+@model  IEnumerable<Customer>
+
+@{
+    ViewBag.Title = "QLTaiKhoan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link href="~/Content/mystyle.css" rel="stylesheet" />
+    <link href="~/Content/stylepro.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 0;
+        }
+
+        .img-product {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<h2>QLSanPham</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <span>IDCus</span>
+        </th>
+        <th>
+            <span>NameCus</span>
+        </th>
+        <th>
+            <span>Mật Khẩu</span>
+        </th>
+        <th>
+            <span>Số điện thoại</span>
+        </th>
+        <th>
+            <span>Email Khách Hàng</span>
+        </th>
+        <th>
+            <span>ĐẴ ĐẶT</span>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCus)
+            </td>
+            <td> @Html.Action("CountOrder", "Admin", new { idcus = item.IDCus}) </td>
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("AdminControl", "Admin")" class="btn" style="border: 1px solid black">Về trang chủ</a>

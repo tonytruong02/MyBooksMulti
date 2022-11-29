@@ -1,0 +1,5 @@
+﻿@model IEnumerable<MyBooks.Models.voucher_pro>
+@foreach (var item in Model)
+{
+    <span> @String.Format($"MÃ: {item.IDVoucher} Tỉ lệ: {Math.Round((double)item.VOUCHER.GIAM*100, 0)}%")</span> <br />
+}

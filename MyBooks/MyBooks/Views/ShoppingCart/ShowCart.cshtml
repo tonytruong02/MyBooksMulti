@@ -1,0 +1,92 @@
+﻿@model MyBooks.Models.Cart
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2 style="text-align: center">Giỏ hàng</h2>
+<a href="@Url.Action("TrangChu","Product")">Tiếp tục mua hàng</a>
+@if (Model != null)
+{
+<table class="table">
+    <thread>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Hình sản phẩm</th>
+            <th>Giá cũ</th>
+            <th>Giá mới</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            decimal total = item._quantity * (decimal)item._newPrice;
+            <tr>
+                <td>@Html.DisplayFor(model => item._book.BookName) </td>
+                <td><img src="@Url.Action(item._book.Imagebook, "Image")" height="150" width="150" /></td>
+                <td style="color: gray; text-decoration: line-through">@Math.Round((double)item._book.Price, 0) đ</td>
+                <td style="color: red; font-weight: bold;">@Math.Round((double)item._newPrice, 0) đ</td>
+
+                <td>
+                    @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                    {
+                        <input type="hidden" value="@item._book.BookID" name="idPro" />
+                        <input type="number" value="@item._quantity" name="cartQuantity" />
+                        <input type="submit" value="Update" />
+                    }
+                </td>
+                <td>@total</td>
+                <td>
+                    <a href=" @Url.Action("RemoveCart", "ShoppingCart", new { id = item._book.BookID, idcus = Session["IDCus"]})">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6" style="text-align:right;font-weight: bolder">Tổng tiền: @Math.Round((double)Model.Total_money(), 0) đ</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @if (ViewBag.CheckSLuong != null)
+                {
+                    <span> ViewBag.CheckSLuong</span>
+                }
+            </td>
+            <td colspan="4">
+                @using (Html.BeginForm("Checkout", "ShoppingCart"))
+                {
+                    <table style="border-collapse:separate;border-spacing: 5px">
+                        <tr>
+                            <td>Code customer: </td>
+                            <td><input type="number" name="CodeCustomer" required value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>Address Delivery: </td>
+                            <td><input type="text" name="AddressDelivery" required value="" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @if (Model.Total_money() > 0)
+                                {
+                                    <input type="submit" name="name" class="btn btn-success" value="CheckOut" />
+                                }
+                                <a href="@Url.Action("Create", "Customer")" class="btn btn-success">Register</a>
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </td>
+        </tr>
+    </tfoot>
+</table>
+}
+else
+{
+    @Html.Partial("EmptyCart");
+}
+

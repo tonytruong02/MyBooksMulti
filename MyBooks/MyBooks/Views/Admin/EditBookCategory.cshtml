@@ -1,0 +1,7 @@
+﻿@model IEnumerable<MyBooks.Models.Category>
+<select name="book.Category">
+    @foreach (var item in Model)
+            {
+                <option value="@item.MaCate">@item.MoTa</option>
+            }
+</select>

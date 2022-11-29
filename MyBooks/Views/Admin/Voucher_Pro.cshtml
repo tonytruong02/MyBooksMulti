@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MyBooks.Models.voucher_pro>
+
+<h2>NHỮNG SẢN PHẨM DÙNG VOUCHER ĐÓ</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <span>Mã Sách</span>
+        </th>
+        <th>
+            <span>Tên Sách</span>
+        </th>
+        <th>
+            <span>Mã Voucher</span>
+        </th>
+        <th>
+            <span>Tỉ lệ giảm</span>
+        </th>
+        <th>
+            <span>Voucher Áp Dụng</span>
+        </th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td rowspan="5"> Không có sản phẩm nào áp dụng voucher </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span>@item.IDBook</span>
+                </td>
+                <td>
+                    <span>@item.Book.BookName</span>
+                </td>
+                <td>
+                    <span>@item.IDVoucher</span>
+                </td>
+                <td>
+                    <span> @item.VOUCHER.GIAM</span>
+                </td>
+                <td>
+                    <span> @item.VOUCHER.MoTa</span>
+                </td>
+            </tr>
+        }
+    }
+</table>

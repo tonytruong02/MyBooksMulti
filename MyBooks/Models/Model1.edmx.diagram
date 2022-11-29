@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="15d4a5dfbd304cce84092937aa2f8c0a" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.AdminUser" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.Book" Width="1.5" PointX="0.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.CartList" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.Customer" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.OrderDetail" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.OrderPro" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.VOUCHER" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.voucher_pro" Width="1.5" PointX="3.5" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__CartList__BookID__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__OrderDeta__IDPro__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__voucher_p__IDBoo__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__CartList__IDCus__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__CartList__IDVouc__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__OrderPro__IDCus__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__OrderDeta__IDOrd__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__OrderDeta__IDVou__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__voucher_p__IDVou__398D8EEE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_MYBOOKSModel.Category" Width="1.5" PointX="8.375" PointY="4.75" />
+        <AssociationConnector Association="DB_MYBOOKSModel.FK__Book__Category__2B3F6F97" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

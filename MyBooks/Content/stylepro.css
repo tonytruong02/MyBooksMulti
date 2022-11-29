@@ -1,0 +1,363 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nerko+One&display=swap');
+
+
+body {
+    color: var(--text-color);
+    margin: 0;
+    width: 100%;
+    font-family: "Poppins",sans-serif;
+    padding: 0px;
+}
+#div-top {
+    font-size: 20px;
+    font-family: Arial;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#copyright {
+    border-top: 1px solid #333;
+}
+
+#footer a {
+    color: white;
+}
+
+.text-white {
+    color: white !important;
+    text-decoration: none;
+    line-height: 2;
+    font-weight: 300;
+    text-align: justify;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.quoet {
+    font-family: Dancing Script;
+    font-size: 40px;
+}
+.navbar .navbar-nav .nav-item {
+    position: relative;
+    padding: 0px;
+}
+
+    .navbar .navbar-nav .nav-item::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: '';
+        background-color: white;
+        width: 0%;
+        padding: 0px;
+        height: 4px;
+    }
+
+    .navbar .navbar-nav .nav-item:hover::after {
+        width: 100%;
+    }
+
+.navbar {
+    padding: 0;
+}
+
+    .navbar .navbar-nav .nav-link {
+        padding: 1em;
+    }
+
+#div-footer {
+    height: 50px;
+    bottom: 0px;
+    text-align: center;
+    left: 50%;
+    padding-top: 55px;
+}
+
+.myform {
+    max-width: 100%;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+.moform {
+    box-shadow: 0 4px 6px 0px rgba(22,22,26, 0.18);
+}
+
+.btn-close {
+    position: absolute;
+    right: 0;
+    padding: 1em;
+}
+
+.modal-content {
+    width: 80%;
+    margin: 0px auto;
+}
+
+.h1 {
+    font-size: 2.3em;
+    font-weight: bold;
+}
+
+.myform {
+    padding: 2em;
+    max-width: 100%;
+    color: #fff;
+    box-shadow: 0 4px 6px 0px rgba(22,22,26, 0.18);
+}
+
+.social-list {
+    text-align: center;
+    line-height: 2.4;
+}
+
+    .social-list a {
+        font-size: 24px;
+        text-decoration: none;
+        color: #fff;
+    }
+
+        .social-list a:hover {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+#coppyright {
+    margin-top: -30px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-container {
+    background: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+}
+
+header.modal-header {
+    background: #009688;
+    height: 129px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #FFF;
+    letter-spacing: 4px;
+}
+
+.modal-close {
+    position: absolute;
+    margin-left: 50px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+    .modal-close:hover {
+        opacity: 0.1;
+    }
+
+.modal-body {
+    padding: 16px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.modal-input {
+    width: 100%;
+    border: 1px solid #CCC;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+#buy-tickets {
+    background: #009688;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.modal-footer {
+    padding: 16px;
+}
+
+.modal-dangky {
+    text-decoration: none;
+    color: red;
+}
+
+    .modal-dangky a {
+        color: red;
+    }
+
+
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-color: #Fd4646;
+    --text-color: #171427;
+    --bg-color: #FFF;
+}
+/*shop*/
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+section {
+    padding: 4rem 0 3rem;
+}
+
+.shop {
+    margin-top: 2rem;
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, auto));
+    gap: 1.5rem;
+}
+
+.product-box {
+    position: relative;
+    max-width: 300px;
+    max-height:600px;
+}
+
+    .product-box:hover {
+        border: 1px solid var(--text-color);
+        transition: 0.4s;
+    }
+
+.img-product {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    display:block;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-weight: 500;
+}
+
+.add-cart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--text-color);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/*footer*/
+.address-footer {
+    margin-top: -20px;
+    font-weight: 400;
+    line-height: 2.4;
+}
+
+.img-logo3 {
+    margin-left: 25px;
+}
+
+.first {
+    margin-top: -40px;
+    margin-left: -20px;
+}
+
+.footer-static-content ul li a {
+    line-height: 35px;
+    padding-left: 10px;
+    background: url(https://cdn0.fahasa.com/skin/frontend/ma_vanese/ma_vanesa2/images/icon-footer.png) no-repeat 0 9px;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+    .footer-static-content ul li a:hover {
+        background-position: 0px -40px;
+        padding-left: 25px;
+        color: #ea7696;
+    }
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.button_more {
+    display: block;
+    height: 50px;
+    width: fit-content;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bolder;
+    margin: 10px auto;
+    transition: 0.25s ease-in-out;
+    color: black;
+}
+.button_more:hover{
+    background-color: black;
+    color: white;
+
+}

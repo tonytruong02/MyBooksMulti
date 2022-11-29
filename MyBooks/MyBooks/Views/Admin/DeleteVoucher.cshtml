@@ -1,0 +1,35 @@
+﻿@model MyBooks.Models.VOUCHER
+
+@{
+    ViewBag.Title = "DeleteVoucher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>XÓA VOUCHER KHỎI DANH SÁCH</h2>
+
+<table class="table">
+    <tr>
+        <th >
+            <span> Mã Voucher</span>
+        </th>
+        <th >
+            <span>Tỉ lệ giảm</span>
+        </th>
+        <th >
+            <span>Mô tả</span>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <span>@Model.MAVOUCHER</span>
+        </td>
+        <td>
+            <span> @Math.Round((double)(Model.GIAM * 100), 0)% </span>
+        </td>
+        <td>
+            <span>@Model.MoTa</span>
+        </td>
+    </tr>
+</table>
+@Html.Action("Voucher_Pro", "Admin", new { mavoucher = Model.MAVOUCHER.Trim()})
+@Html.ActionLink("Xóa", "DeleteVoucherNow", new { mavoucher = Model.MAVOUCHER.Trim() })

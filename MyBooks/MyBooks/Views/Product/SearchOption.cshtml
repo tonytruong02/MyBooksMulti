@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyBooks.Models.Book>
+@{
+    ViewBag.Title = "SearchOption";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<head>
+    <link href="~/Content/mystyle.css" rel="stylesheet" />
+    <link href="~/Content/stylepro.css" rel="stylesheet" />
+</head>
+<h3>LỌC DANH SÁCH</h3>
+@using (Html.BeginForm("SearchOption", "Product"))
+{
+    <text>Từ</text>
+    <input type="number" name="min" />
+    <text>Đến</text>
+    <input type="number" name="max" />
+    <input type="submit" value="Search" />
+    <div class="container">
+        <div class="row" style="margin-top: 10px">
+            @foreach (var sach in Model)
+            {
+            <div class="product-box">
+                <img class="img-product" src="~/Image/@sach.Imagebook" alt="" />
+                <h2 class="product-title">@sach.BookName</h2>
+                <span class="price">@Math.Round(Convert.ToDouble(sach.Price), 0) đ</span>
+                <a href="@Url.Action("Detail", "Product", new { id = sach.BookID}) "><i class="ti-bag add-cart"></i></a>
+            </div>
+            }
+        </div>
+    </div>
+}

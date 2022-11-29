@@ -1,0 +1,40 @@
+﻿@model MyBooks.Models.Book
+
+@{
+    ViewBag.Title = "LinkVoucher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/mystyle.css" rel="stylesheet" />
+@if (ViewBag.Error != null)
+{
+    <span>ViewBag.Error</span>
+}
+@Html.BeginForm("LinkVoucher", "Admin", new { idbook = Model.BookID })
+{
+<table class="table">
+    <tr>
+        <th>
+            <span>MÃ SÁCH</span>
+        </th>
+        <th>
+            <span>TÊN SÁCH</span>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <span>@Model.BookID</span>
+        </td>
+        <td>
+            <span>@Model.BookName </span>
+        </td>
+    </tr>
+</table>
+<h4>ĐÃ LIÊN KẾT</h4>
+@Html.Action("LinkedVoucher", "Admin", new { bookid = Model.BookID })
+<h4>CHƯA LIÊN KẾT</h4>
+
+@Html.Action("NotLinkedVoucher", "Admin", new { bookid = Model.BookID })
+<button type="submit" name="name" class="btn custom-btn btn-5" value="CheckOut">Xác Nhận</button>
+<div class="btn custom-btn btn-16">
+@Html.ActionLink("Trở về", "ShowBookList", "Admin")
+     </div>

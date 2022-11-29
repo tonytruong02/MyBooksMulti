@@ -1,0 +1,76 @@
+﻿@model MyBooks.Models.Book
+
+@{
+    ViewBag.Title = "CreateBook";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>Book</h4>
+    <hr />
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @if (ViewBag.ThongBaoCreate != null)
+    {
+        <h3>ViewBag.ThongBaoCreate</h3>
+    }
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã sách</label><br />
+        <input class="form-control col-md-10" type="text" name="book.BookID" value="" placeholder="Mã sách" required />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên sách</label><br />
+        <input class="form-control col-md-10" type="text" name="book.BookName" value="" placeholder="Tên sách" required />
+    </div>
+    <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <label class="control-label col-md-2">Nhà xuất bản</label><br />
+        <input class="form-control col-md-10" type="text" name="book.NXB" value="" placeholder="NXB" required />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Nhà cung cấp</label><br />
+        <input class="form-control col-md-10" type="text" name="book.NCC" value="" placeholder="NCC" required />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Chủ đề</label><br />
+        @Html.Action("EditBookCategory", "Admin")
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Đơn vị</label><br />
+        <input class="form-control col-md-10" type="text" name="book.Unit" value="" placeholder="Đơn vị" required />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Giá</label><br />
+        <input class="form-control col-md-10" type="number" name="book.Price" value="" placeholder="Giá " required />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Số lượng kho: </label><br />
+        <input class="form-control col-md-10" type="number" name="book.SLuong" value="" placeholder="Số lượng " required />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày thêm vào</label><br />
+        <input class="form-control col-md-10" type="datetime" name="book.DateAdd" value="@DateTime.Now.ToString("MM/dd/yyyy")" placeholder="mm/dd/yyyy" required />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình ảnh</label><br />
+        <input class="form-control col-md-10" type="file" name="book.Imagebook" value="" required />
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Quay về trang sản phẩm", "QLSanPham")
+</div>
+
+

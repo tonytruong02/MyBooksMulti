@@ -1,0 +1,94 @@
+﻿@model MyBooks.Models.Book
+
+@{
+    ViewBag.Title = "DeleteBook";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link href="~/Content/mystyle.css" rel="stylesheet" />
+    <link href="~/Content/stylepro.css" rel="stylesheet" />
+    <style>
+        body {
+            padding: 0;
+        }
+
+        .img-product {
+            width: 100px;
+        }
+    </style>
+</head>
+<h1>XÓA SẢN PHẨM</h1>
+<h4>Sau khi xóa sản phẩm, dữ liệu trong những bảng dưới đây sẽ bị mất</h4>
+@if (ViewBag.Error != null)
+{
+    <span>@ViewBag.Error</span>
+}
+
+    <h3>Bảng Sách</h3>
+    <table class="table">
+        <tr>
+            <th>
+                <span>Mã Sách</span>
+            </th>
+            <th>
+                <span>Tên Sách</span>
+            </th>
+            <th>
+                <span>Nhà Xuất Bản</span>
+            </th>
+            <th>
+                <span>Nhà Cung Cấp</span>
+            </th>
+            <th>
+                <span>Chủ Đề</span>
+            </th>
+            <th>
+                <span>Đơn Vị</span>
+            </th>
+            <th>
+                <span>Số Lượng Tồn</span>
+            </th>
+            <th>
+                <span>Đơn Giá</span>
+            </th>
+            <th>
+                <span>Ảnh</span>
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Model.BookID
+            </td>
+            <td>
+                @Model.BookName
+            </td>
+            <td>
+                @Model.NXB
+            </td>
+            <td>
+                @Model.NCC
+            </td>
+            <td>
+                @Model.Category1.MoTa
+            </td>
+            <td>
+                @Model.Unit
+            </td>
+            <td>
+                @Model.SLuong
+            </td>
+            <td>
+                <span>@Math.Round(Convert.ToDouble(Model.Price), 0) đ</span>
+            </td>
+            <td>
+                <img class="img-product" src="~/Image/@Model.Imagebook" alt="" />
+            </td>
+        </tr>
+    </table>
+    <h3>Hóa đơn liên quan đến sách</h3>
+@Html.Action("ChiTietHoaDon", "Admin", new { bookid = Model.BookID })
+@Html.ActionLink("Xóa ngay", "DeleteBookNow", new { id = Model.BookID})
+<div>
+    @Html.ActionLink("Quay về trang sản phẩm", "QLSanPham")
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MyBooks.Models.OrderDetail>
+
+@if (Model.Count() == 0)
+{
+    <span style="font-weight:bolder">Sản phẩm chưa được đặt mua...</span>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th>
+            <span>Mã KH</span>
+        </th>
+        <th>
+            <span>Tên KH</span>
+        </th>
+        <th>
+            <span>Ngày Đặt</span>
+        </th>
+        <th>
+            <span>Số Lượng</span>
+        </th>
+        <th>
+            <span>Mã Voucher</span>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @item.OrderPro.IDCus</td>
+            <td> @item.OrderPro.Customer.NameCus</td>
+            <td>@item.OrderPro.DateOrder</td>
+            <td>@item.Quantity</td>
+            @if (item.IDVoucher != null)
+            {
+                <td>@item.VOUCHER.MoTa</td>
+            }
+            else
+            {
+                <td>Không sử dụng voucher</td>
+            }
+        </tr>
+    }
+
+</table>
+}

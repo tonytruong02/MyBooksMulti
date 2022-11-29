@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MyBooks.Models.VOUCHER>
+
+@{
+    ViewBag.Title = "QLVoucher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>QLVoucher</h2>
+
+<div>
+    @Html.ActionLink("Tạo mới", "CreateVoucher")
+</div>
+<div>
+    @Html.ActionLink("Gán link", "ShowBookList")
+</div>
+<div>
+    @Html.ActionLink("Danh Sách Chi Tiết", "Detail")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            <span> Mã Voucher</span>
+        </th>
+        <th>
+            <span>Tỉ lệ giảm</span>
+        </th>
+        <th>
+            <span>Mô tả</span>
+        </th>
+    </tr>
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MAVOUCHER)
+    </td>
+    <td>
+        <span> @Math.Round((double)(item.GIAM * 100), 0)% </span>
+    </td>
+    <td>
+        <span> @item.MoTa </span>
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditVou", new { id = item.MAVOUCHER.Trim() }) |
+        @Html.ActionLink("Delete", "DeleteVoucher", new { id = item.MAVOUCHER.Trim() })
+    </td>
+</tr>
+}
+</table>
+
+<a href="@Url.Action("AdminControl", "Admin")" class="btn" style="border: 1px solid black">Về trang chủ</a>

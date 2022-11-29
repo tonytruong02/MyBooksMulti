@@ -1,0 +1,84 @@
+﻿@model MyBooks.Models.Book
+    
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CHỈNH SỬA SẢN PHẨM</h2>
+<form action="/Admin/Edit" method="post">
+    <div class="form-horizontal">
+        <h4>Book</h4>
+        @Html.ValidationSummary(false)
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">ID Sách</label><br />
+            <input class="form-control col-md-10" type="text" name="book.BookID" value="@Model.BookID" placeholder="ID Sách" required />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên sách</label><br />
+            <input class="form-control col-md-10" type="text" name="book.BookName" value="@Model.BookName" placeholder="Tên sách" required />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+
+            <label class="control-label col-md-2">Nhà xuất bản</label><br />
+            <input class="form-control col-md-10" type="text" name="book.NXB" value="@Model.NXB" placeholder="NXB" required />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <label class="control-label col-md-2">Nhà cung cấp</label><br />
+            <input class="form-control col-md-10" type="text" name="book.NCC" value="@Model.NCC" placeholder="NCC" required />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Chủ đề</label><br />
+            @Html.Action("EditBookCategory", "Admin")
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Đơn vị</label><br />
+            <input class="form-control col-md-10" type="text" name="book.Unit" value="@Model.Unit" placeholder="Đơn vị" required />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Voucher đang áp dụng</label><br />
+            @Html.Action("BookVoucher", "Admin", new { idbook = Session["BookID"] })
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Giá </label><br />
+            <input class="form-control col-md-10" type="number" name="book.Price" value="@Model.Price" placeholder="Giá " required />
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Số lượng tồn: </label> <br />
+            <input class="form-control col-md-10" type="number" name="book.SLuong" value="@Model.SLuong" placeholder="Số lượng tồn " required />
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Ngày thêm:  </label> <br/>
+            <input class="form-control col-md-10" type="datetime" name="book.DateAdd" value="@Model.DateAdd" placeholder="mm/dd/yyyy" required />
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình ảnh</label><br />
+            <input class="form-control col-md-10" type="file" name="book.Imagebook" value="@Model.Imagebook" required />
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div>
+    @Html.ActionLink("Quay về trang sản phẩm", "QLSanPham")
+</div>

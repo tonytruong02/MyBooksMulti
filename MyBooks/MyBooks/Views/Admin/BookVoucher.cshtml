@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyBooks.Models.voucher_pro>
+
+@if (Model.Count() == 0)
+{
+    <span style="font-weight: bolder"> Sản phẩm không áp dụng Voucher ... </span>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th>
+            <span>Mã voucher</span>
+        </th>
+        <th>
+            <span>Mô tả voucher</span>
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VOUCHER.MAVOUCHER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VOUCHER.MoTa)
+            </td>
+        </tr>
+    }
+</table>
+}

@@ -1,0 +1,128 @@
+﻿@using MyBooks.Models   
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Fonts/themify-icons/themify-icons.css" rel="stylesheet" />
+    <link href="~/Content/stylepro.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <style>
+        body {
+            padding: 0;
+        }
+
+        .logo {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="div-top" style="">
+        <nav class="navbar navbar-expand-lg bg-dark " style="padding: 0">
+            <div class="container">
+                <a href="@Url.Action("TrangChu", "Product")" " class="logo text-white" style="font-size: 40px; font-weight:bolder;font-family: Nerko One">MYBOOKS</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navmenu"> <span class="navbar-toggler-icon"></span> </button>
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav ms-auto">
+                        @if (Session["IDCus"] != null)
+                        {
+                            <li class="nav-item"><a href="@Url.Action("ShowInfo", "Sign", new { idCus = Session["IDCus"]})" class="nav-link text-white">Hello @Session["NameCus"]</a></li>
+                        }
+                        <li class="nav-item"><a href="@Url.Action("TrangChu", "Product")" class="nav-link text-white">Trang Chủ</a></li>
+                        <li class="nav-item"><a href="@Url.Action("ThongTin", "Layout")" class="nav-link text-white">Thông Tin</a></li>
+                        <li class="nav-item"><a href="@Url.Action("SearchOption", "Product")" class="nav-link text-white">Bộ Lọc</a></li>
+                        @if (Session["NameCus"] == null)
+                        {
+                            <li class="nav-item "><a href="@Url.Action("DangNhap", "Sign")" class="nav-link text-white ">Đăng nhập</a></li>
+                            <li class="nav-item "><a href="@Url.Action("DangKy", "Sign")" class="nav-link text-white ">Đăng ký</a></li>
+                        }
+
+                        @if (Session["NameCus"] != null)
+                        {
+                            <li class="nav-item "><a href="~/Sign/LogOutUser" class="nav-link text-white ">Đăng xuất</a></li>
+
+                        }
+                        <li class="nav-item text-white ti-shopping-cart nav-link">
+                            <span>
+                                <a href="@Url.Action("ShowCart", "ShoppingCart")"> <i class="bi bi-cart2" style="color:white;height: 20px;"></i> </a>@Html.Action("BagCart", "ShoppingCart")
+                            </span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div id="div-footer">
+        <footer class="bg-dark text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 mt-5">
+                        <h4>THÔNG TIN</h4>
+                        <hr />
+                        <p>
+                            MYBOOKS là tên một cửa hàng bán sách trực tuyến, thành lập năm 2022 ở thành phố Hồ Chí Minh.
+                        </p>
+                    </div>
+                    <div class="col-md-3 mt-5">
+                        <h4>
+                            KHÁM PHÁ VỀ MYBOOKS
+                        </h4>
+                        <hr />
+                        <p>
+                            <a class="text-white" href="@Url.Action("TrangChuMore", "Product", new { category ="VANHOC"})">Sách văn học</a>
+                            <br />
+                            <a class="text-white" href="@Url.Action("TrangChuMore", "Product", new { category ="KINHTE"})">Sách kinh tế</a>
+                            <br />
+                            <a class="text-white" href="@Url.Action("TrangChuMore", "Product", new { category ="TAMLI"})">Sách tâm lí</a>
+                            <br />
+                            <a class="text-white" href="@Url.Action("TrangChuMore", "Product", new { category ="GIAODUC"})">Sách giáo dục</a>
+                            <br />
+                            <a class="text-white" href="@Url.Action("TrangChuMore", "Product", new { category ="THIEUNHI"})">Sách thiếu nhi</a>
+                        </p>
+                    </div>
+                    <div class="col-md-3 mt-5">
+                        <h4>CHĂM SÓC KHÁCH HÀNG</h4>
+                        <hr />
+                        <a class="text-white" href="~/Layout/ChinhSachHT">Chính sách đổi trả - hoàn tiền</a>
+                        <br />
+                        <a class="text-white" href="~/Layout/ChinhSachBH">Chính sách bảo hành - bồi hoàn</a>
+                        <br />
+                        <a class="text-white" href="~/Layout/ChinhSachVC">Chính sách vận chuyển</a>
+                        <br />
+                        <a class="text-white" href="~/Layout/ChinhSachTT">Phương thức thanh toán và xuất hoá đơn</a>
+                    </div>
+                    <div class="col-md-3 mt-5">
+                        <h4>LIÊN HỆ</h4>
+                        <hr />
+                        <p>
+                            Hotline Hồ Chí Minh: 0123 456 789
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="social-list">
+                <a href="https://www.facebook.com/"><i class="ti-facebook"></i></a>
+                <a s href="https://www.instagram.com/"><i class="ti-instagram"></i></a>
+                <a href="https://www.pinterest.com/"><i class="ti-pinterest"></i></a>
+                <a href="https://twitter.com/?lang=vi"><i class="ti-twitter"></i></a>
+                <p class="bg-dark text-white text-center py-4" id="coppyright">
+                    Copyright &copy; 2022 All Rights Reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

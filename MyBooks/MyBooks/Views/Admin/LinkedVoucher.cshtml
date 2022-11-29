@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MyBooks.Models.voucher_pro>
+<table class="table">
+    <tr>
+        <th class="col-3">
+            <span>Mã Voucher</span>
+        </th>
+        <th class="col-3">
+            <span>Tỉ lệ giảm</span>
+        </th>
+        <th class="col-3">
+            <span>Mô tả voucher</span>
+        </th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <span>@item.IDVoucher</span>
+        </td>
+        <td>
+            <span>@Math.Round((double)(item.VOUCHER.GIAM * 100), 0) %</span>
+        </td>
+        <td>
+            <span>@item.VOUCHER.MoTa</span>
+        </td>
+    </tr>
+}
+</table>

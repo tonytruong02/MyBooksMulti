@@ -1,0 +1,84 @@
+﻿@using MyBooks.Models
+@using System
+@model  IEnumerable<Book>
+@{
+    ViewBag.Title = "Xem Thêm";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<head>
+    <link href="~/Content/stylepro.css" rel="stylesheet" />
+    <link href="~/Fonts/themify-icons/themify-icons.css" rel="stylesheet" />
+    <style>
+        .button_more {
+            display: block;
+            height: 50px;
+            width: fit-content;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bolder;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<div class="container" style="padding-top:3px">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Image/test_adver1.jpg" class="d-block w-100">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/Image/test_adver2.jpg" class="d-block w-100">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/Image/test_adver3.jpg" class="d-block w-100">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/Image/test_adver4.jpg" class="d-block w-100">
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="row" style="margin-top: 10px">
+            @foreach (var sach in Model)
+            {
+            <div class="product-box">
+                <img class="img-product" src="~/Image/@sach.Imagebook" alt="" />
+                <h2 class="product-title">@sach.BookName</h2>
+                <span class="price">@Math.Round(Convert.ToDouble(sach.Price), 0) đ</span>
+                <a href="@Url.Action("Detail", "Product", new { id = sach.BookID}) "><i class="ti-bag add-cart"></i></a>
+
+            </div>
+            }
+        </div>
+    </div>
+
+<script src="~/Content/script.min.js"></script>

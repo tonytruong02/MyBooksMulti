@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MyBooks.Models.voucher_pro>
+
+<head>
+    <style>
+        select {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-family: cursive, sans-serif;
+            outline: 0;
+            background: red;
+            color: #fff;
+            border: 1px solid crimson;
+            padding: 4px;
+            border-radius: 9px;
+        }
+    </style>
+</head>
+<br />
+<select name="VoucherCode" id="voucher">
+    @foreach (var vou in Model)
+    {
+        <option value="@vou.IDVoucher">@vou.VOUCHER.MoTa</option>
+    }
+</select>

@@ -1,0 +1,43 @@
+﻿@model MyBooks.Models.VOUCHER
+
+@{
+    ViewBag.Title = "CreateVoucher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/mystyle.css" rel="stylesheet" />
+<h2>CreateVoucher</h2>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>VOUCHER</h4>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <span>Mã voucher:</span>
+            <div class="col-md-10">
+                <input type="text" name="voucher.MAVOUCHER" value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <span>Tỉ lệ giảm:</span>
+            <div class="col-md-10">
+                <input type="text" name="voucher.Giam" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <span>Mô tả voucher:</span>
+            <div class="col-md-10">
+                <input type="text" name="voucher.MoTa" value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" name="name" class="btn custom-btn btn-5" value="CheckOut">Create</button>
+            </div>
+        </div>
+    </div>
+}
+<div class="custom-btn btn-16">
+    @Html.ActionLink("Back to List", "QLVoucher")
+</div>
